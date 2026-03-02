@@ -1,0 +1,93 @@
+services:
+  #BASES DE DATOS
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - edugrade-net
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - edugrade-net
+
+  redis:
+    image: redis:alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes: 
+      - redis_data:/data
+    networks:
+      - edugrade-net
+
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    networks:
+      - edugrade-net
+
+  #BACKEND
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/edugrade
+      - NEO4J_URI=bolt://neo4j:7687
+      - REDIS_HOST=redis
+      - CASSANDRA_CONTACT_POINTS=cassandra
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_KEYSPACE=edugrade_analitica
+      - PORT=3000
+    depends_on:
+      - mongo
+      - neo4j
+      - redis
+      - cassandra
+    networks:
+      - edugrade-net
+
+  #FRONTEND
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
+    depends_on:
+      - backend
+    networks:
+      - edugrade-net
+
+volumes:
+  mongo_data:
+  neo4j_data:
+  redis_data:
+  cassandra_data:
+
+networks:
+  edugrade-net:
+    driver: bridge
