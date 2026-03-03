@@ -22,8 +22,8 @@ Siga estos pasos para configurar y ejecutar el entorno de desarrollo local.
 
 ### 1. Requisitos Previos
 
-Tener instalado Docker Desktop.  
-Node.js instalado para la gestión de dependencias locales.
+* Tener instalado Docker Desktop.  
+* Node.js instalado para la gestión de dependencias locales.
 
 ### 2. Despliegue con Docker
 
@@ -58,7 +58,7 @@ Como ejemplo, para cargar nuevas versiones de reglas desde el frontend, utilice 
 
 ## Stack tecnológico
 
-Orquestación: Docker Compose
-Frontend: React + Vite + Tailwind + HeroUI
-Backend: Node.js + Express.
-Bases de Datos: MongoDB, Neo4j, Redis, Cassandra
+* Orquestación: Docker Compose
+* Frontend: React + Vite + Tailwind + HeroUI
+* Backend: Node.js + Express.
+* Bases de Datos: MongoDB, Neo4j, Redis, Cassandra
