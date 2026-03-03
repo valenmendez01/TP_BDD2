@@ -1,12 +1,8 @@
 # EduGrade Global: Un enfoque de Persistencia Políglota para la Gestión Académica
 
----
-
 ## Descripción
 
 Este proyecto surge de la necesidad de centralizar y estandarizar el historial académico de estudiantes provenientes de diversos sistemas educativos internacionales. El sistema permite interpretar y preservar calificaciones expresadas en formatos heterogéneos (A-Levels, GPA, escalas numéricas, etc.) conservando el contexto original y permitiendo conversiones automáticas trazables.
-
----
 
 ## Casos de Uso por Tecnología
 
@@ -20,8 +16,6 @@ Para resolver los desafíos del dominio, se implementó una arquitectura de pers
 
 - **Apache Cassandra (Auditoría y Analítica):** Utilizado para el registro de auditoría inmutable (append-only) y el almacenamiento de métricas agregadas sobre grandes volúmenes de datos. Soporta ráfagas de escritura masiva y consultas analíticas pre-calculadas.
 
----
-
 ## Inicialización del Proyecto
 
 Siga estos pasos para configurar y ejecutar el entorno de desarrollo local.
@@ -31,8 +25,6 @@ Siga estos pasos para configurar y ejecutar el entorno de desarrollo local.
 Tener instalado Docker Desktop.  
 Node.js instalado para la gestión de dependencias locales.
 
----
-
 ### 2. Despliegue con Docker
 
 Abrir Docker Desktop y desde la carpeta raíz del proyecto (tpo-edu-grade), ejecute el siguiente comando para levantar todos los servicios:
@@ -40,8 +32,6 @@ Abrir Docker Desktop y desde la carpeta raíz del proyecto (tpo-edu-grade), ejec
 ```bash
 docker-compose up --build
 ```
-
----
 
 ### 3. Inicialización de Datos (Data Seeding)
 
@@ -58,19 +48,13 @@ docker-compose exec backend node src/scripts/seedData.js
 docker-compose exec backend node src/scripts/seedRedis.js
 ```
 
----
-
 ### 4. Acceso al Sistema
 
 Frontend: http://localhost:5173
 
----
-
 ## Reglas de conversión
 
 Como ejemplo, para cargar nuevas versiones de reglas desde el frontend, utilice el JSON ubicado en la carpeta de utils del frontend.
-
----
 
 ## Stack tecnológico
 
