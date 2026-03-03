@@ -4,6 +4,13 @@
 
 Este proyecto surge de la necesidad de centralizar y estandarizar el historial académico de estudiantes provenientes de diversos sistemas educativos internacionales. El sistema permite interpretar y preservar calificaciones expresadas en formatos heterogéneos (A-Levels, GPA, escalas numéricas, etc.) conservando el contexto original y permitiendo conversiones automáticas trazables.
 
+## Stack tecnológico
+
+* Orquestación: Docker Compose
+* Frontend: React + Vite + Tailwind + HeroUI
+* Backend: Node.js + Express.
+* Bases de Datos: MongoDB, Neo4j, Redis, Cassandra
+
 ## Casos de Uso por Tecnología
 
 Para resolver los desafíos del dominio, se implementó una arquitectura de persistencia políglota donde cada motor cumple un rol específico:
@@ -55,10 +62,3 @@ Frontend: http://localhost:5173
 ## Reglas de conversión
 
 Como ejemplo, para cargar nuevas versiones de reglas desde el frontend, utilice el JSON ubicado en la carpeta de utils del frontend.
-
-## Stack tecnológico
-
-* Orquestación: Docker Compose
-* Frontend: React + Vite + Tailwind + HeroUI
-* Backend: Node.js + Express.
-* Bases de Datos: MongoDB, Neo4j, Redis, Cassandra
